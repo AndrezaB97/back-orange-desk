@@ -1,5 +1,7 @@
 "use strict";
 
+const { get } = require("@adonisjs/framework/src/Route/Manager");
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -16,5 +18,18 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
-Route.post("/users", "UserController.create");
-Route.post("/sessions", "SessionController.create");
+Route.group(() => {
+  Route.post("/users", "UserController.create");
+  Route.post("/sessions", "SessionController.create");
+}).prefix("api/v1");
+
+// estrutura dos cruds
+Route.group(() => {
+  Route.get("teste", "");
+  Route.get("", "");
+  Route.post("", "");
+  Route.put("", "");
+  Route.delete("", "");
+})
+  .prefix("api/v1")
+  .middleware("auth");
