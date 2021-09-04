@@ -19,7 +19,7 @@ const { get } = require("@adonisjs/framework/src/Route/Manager");
 const Route = use("Route");
 
 Route.group(() => {
-  Route.post("/users", "UserController.create");
+  Route.post("/register_company", "UserController.create");
   Route.post("/sessions", "SessionController.create");
 }).prefix("api/v1");
 
