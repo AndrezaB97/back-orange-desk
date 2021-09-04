@@ -80,10 +80,7 @@ module.exports = {
       user: Env.get("DB_USER", "root"),
       password: Env.get("DB_PASSWORD", ""),
       database: Env.get("DB_DATABASE", "adonis"),
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
+      ssl: true,
     },
     debug: Env.get("DB_DEBUG", false),
   },
