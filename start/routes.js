@@ -23,13 +23,23 @@ Route.group(() => {
   Route.post("/sessions", "SessionController.create");
 }).prefix("api/v1");
 
-// estrutura dos cruds
 Route.group(() => {
   Route.get("teste", "");
   Route.get("", "");
-  Route.post("", "");
+  Route.post("/unity", "UnityController.create");
   Route.put("", "");
   Route.delete("", "");
 })
   .prefix("api/v1")
   .middleware("auth");
+
+// estrutura dos cruds
+// Route.group(() => {
+//   Route.get("teste", "");
+//   Route.get("", "");
+//   Route.post("", "");
+//   Route.put("", "");
+//   Route.delete("", "");
+// })
+//   .prefix("api/v1")
+//   .middleware("auth");
