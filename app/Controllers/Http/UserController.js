@@ -1,10 +1,14 @@
 "use strict";
 
 const User = use("App/Models/User");
-const AddressUser = use("App/Models/AddressUser");
 const { validate } = use("Validator");
 
 class UserController {
+  async index() {
+    let user = await User.query().with("unities").fetch();
+    return user;
+  }
+
   async create({ request }) {
     const rules = {
       slug: "required|string|max:80|unique:users,slug",

@@ -24,7 +24,7 @@ Route.group(() => {
 }).prefix("api/v1");
 
 Route.group(() => {
-  Route.get("teste", "");
+  Route.get("/", "");
   Route.get("", "");
   Route.post("/unity", "UnityController.create");
   Route.put("", "");
@@ -33,13 +33,4 @@ Route.group(() => {
   .prefix("api/v1")
   .middleware("auth");
 
-// estrutura dos cruds
-// Route.group(() => {
-//   Route.get("teste", "");
-//   Route.get("", "");
-//   Route.post("", "");
-//   Route.put("", "");
-//   Route.delete("", "");
-// })
-//   .prefix("api/v1")
-//   .middleware("auth");
+Route.get("/companies", "UserController.index").prefix("api/v1"); // retorna todas as empresas
