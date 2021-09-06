@@ -9,7 +9,7 @@ class UserController {
     return user;
   }
 
-  async create({ request }) {
+  async create({ request, response }) {
     const rules = {
       slug: "required|string|max:80|unique:users,slug",
       username: "required|string|max:80|unique:users,username",
@@ -21,7 +21,7 @@ class UserController {
     const validation = await validate(request.all(), rules);
 
     if (validation.fails()) {
-      return validation.messages();
+      return response.status(422).send(validation.messages());
     }
 
     const data = request.only([
