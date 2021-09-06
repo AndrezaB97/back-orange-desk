@@ -13,7 +13,6 @@ class AddressUserSchema extends Schema {
       table.string("city").notNullable();
       table.string("state").notNullable();
       table.integer("number").notNullable();
-      // table.integer("unity_id").notNullable();
       table.string("complement");
       table.timestamps();
     });

@@ -21,7 +21,7 @@ class UserController {
     const validation = await validate(request.all(), rules);
 
     if (validation.fails()) {
-      return response.status(422).send(validation.messages());
+      return response.status(400).send(validation.messages());
     }
 
     const data = request.only([
@@ -35,6 +35,10 @@ class UserController {
     const user = await User.create(data);
 
     return user;
+  }
+
+  async show({ params }) {
+    return User.query().where("slug", params.slug).with("unities").fetch();
   }
 }
 

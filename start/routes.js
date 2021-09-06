@@ -33,4 +33,10 @@ Route.group(() => {
   .prefix("api/v1")
   .middleware("auth");
 
-Route.get("/companies", "UserController.index").prefix("api/v1"); // retorna todas as empresas
+Route.group(() => {
+  Route.get("/companies", "UserController.index"); // retorna todas as empresas
+  Route.get("/companies/:slug", "UserController.show");
+  Route.post("/unity", "UnityController.create");
+  Route.put("", "");
+  Route.delete("", "");
+}).prefix("api/v1");
