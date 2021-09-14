@@ -21,6 +21,7 @@ const Route = use("Route");
 Route.group(() => {
   Route.post("/register", "UserController.create");
   Route.post("/sessions", "SessionController.create");
+  Route.get("/auth", "UserController.authData");
 }).prefix("api/v1");
 
 Route.group(() => {
@@ -42,3 +43,9 @@ Route.group(() => {
 Route.group(() => {
   Route.post("/auth/adm", "AdmUserController.authadm"); // login do adm
 }).prefix("api/v1");
+
+Route.group(() => {
+  Route.post("/reserve", "ReserveController.create"); // login do adm
+})
+  .prefix("api/v1")
+  .middleware("auth");

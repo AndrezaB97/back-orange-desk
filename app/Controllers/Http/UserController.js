@@ -4,6 +4,10 @@ const User = use("App/Models/User");
 const { validate } = use("Validator");
 
 class UserController {
+  async authData({ auth }) {
+    return await auth.getUser();
+  }
+
   async index() {
     let user = await User.query().with("unities").fetch();
     return user;
