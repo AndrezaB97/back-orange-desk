@@ -4,10 +4,6 @@
 const Model = use("Model");
 
 class Unity extends Model {
-  user() {
-    return this.belongsTo("App/Models/User");
-  }
-
   address() {
     return this.hasOne("App/Models/AddressUnity");
   }

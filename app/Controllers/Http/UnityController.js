@@ -5,11 +5,16 @@ const AddressUnity = use("App/Models/AddressUnity");
 const { validate } = use("Validator");
 
 class UnityController {
+  async index() {
+    return Unity.query().with("address").fetch();
+  }
+
   async create({ auth, response, request }) {
     const rules = {
       total_capacity: "required|integer",
       percent_allowed: "required|integer",
       capacity_allowed: "required|integer",
+      is_main: "required|boolean",
       "address.zip_code": "required|string|min:9",
       "address.road": "required|string|max:200",
       "address.district": "required|string|max:200",
@@ -29,11 +34,8 @@ class UnityController {
       "total_capacity",
       "percent_allowed",
       "capacity_allowed",
+      "is_main",
     ]);
-
-    const currentUser = await auth.user;
-
-    unityData.user_id = currentUser.id;
 
     const unity = await Unity.create(unityData);
 
@@ -46,6 +48,10 @@ class UnityController {
     unity.address = address;
 
     return unity;
+  }
+
+  async show({ params }) {
+    return Unity.query().where("id", params.id).with("address").first();
   }
 }
 

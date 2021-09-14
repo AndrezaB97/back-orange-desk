@@ -19,19 +19,17 @@ const { get } = require("@adonisjs/framework/src/Route/Manager");
 const Route = use("Route");
 
 Route.group(() => {
-  Route.post("/register_company", "UserController.create");
+  Route.post("/register", "UserController.create");
   Route.post("/sessions", "SessionController.create");
 }).prefix("api/v1");
 
 Route.group(() => {
-  Route.get("/", "");
-  Route.get("", "");
+  Route.get("/unity", "UnityController.index");
+  Route.get("/unity/:id", "UnityController.show");
   Route.post("/unity", "UnityController.create");
   Route.put("", "");
   Route.delete("", "");
-})
-  .prefix("api/v1")
-  .middleware("auth");
+}).prefix("api/v1");
 
 Route.group(() => {
   Route.get("/companies", "UserController.index"); // retorna todas as empresas
@@ -39,4 +37,8 @@ Route.group(() => {
   Route.post("/unity", "UnityController.create");
   Route.put("", "");
   Route.delete("", "");
+}).prefix("api/v1");
+
+Route.group(() => {
+  Route.post("/auth/adm", "AdmUserController.authadm"); // login do adm
 }).prefix("api/v1");
