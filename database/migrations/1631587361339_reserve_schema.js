@@ -9,7 +9,7 @@ class ReserveSchema extends Schema {
       table.increments();
       table.integer("user_id");
       table.integer("unity_id");
-      table.date("date");
+      table.datetime("date");
       table.integer("desk");
       table.timestamps();
     });

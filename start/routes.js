@@ -46,6 +46,9 @@ Route.group(() => {
 
 Route.group(() => {
   Route.post("/reserve", "ReserveController.create"); // login do adm
+  Route.post("/desk_available", "DeskController.deskAvailable"); // login do adm
+  Route.post("/desk_available_number", "DeskController.desksAvailableNumber"); // login do adm
+  // desksAvailableNumber
 })
   .prefix("api/v1")
   .middleware("auth");

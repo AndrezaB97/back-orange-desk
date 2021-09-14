@@ -4,13 +4,10 @@ const User = require("../../Models/User");
 
 const { validate } = use("Validator");
 const Reserve = use("App/Models/Reserve");
+const Desk = use("App/Models/Desk");
 
 class ReserveController {
   async create({ request, auth, response }) {
-    // table.integer("user_id");
-    // table.integer("unity_id");
-    // table.date("date");
-    // table.integer("desk");
     const rules = {
       unity_id: "required|integer",
       date: "required|date",
@@ -30,6 +27,12 @@ class ReserveController {
     data.user_id = authUser.id;
 
     var reserve = await Reserve.create(data);
+
+    // mudar status da mesa
+    var deskDb = await Desk.query()
+      .where("unity_id", data.unity_id)
+      .where("number", data.desk)
+      .update({ status: false });
 
     return reserve;
   }

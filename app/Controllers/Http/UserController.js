@@ -13,7 +13,7 @@ class UserController {
     return user;
   }
 
-  async create({ request, response }) {
+  async create({ request, response, auth }) {
     const rules = {
       name: "required|string|max:80",
       email: "required|string|max:80|unique:users,email",
@@ -30,7 +30,9 @@ class UserController {
 
     const user = await User.create(data);
 
-    return user;
+    const token = await auth.attempt(data.email, data.password);
+
+    return token;
   }
 
   async show({ params }) {

@@ -51,7 +51,7 @@ class UnityController {
     unity.address = address;
 
     for (let i = 1; i <= 40; i++) {
-      await Desk.create({ number: i, unity_id: unity.id });
+      await Desk.create({ number: i, unity_id: unity.id, status: true });
     }
 
     unity.desks = await Desk.query().where("unity_id", unity.id).fetch();
