@@ -7,6 +7,10 @@ class Unity extends Model {
   address() {
     return this.hasOne("App/Models/AddressUnity");
   }
+
+  desks() {
+    return this.hasMany("App/Models/Desk");
+  }
 }
 
 module.exports = Unity;

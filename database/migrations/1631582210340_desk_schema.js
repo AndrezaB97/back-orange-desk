@@ -8,6 +8,7 @@ class DeskSchema extends Schema {
     this.create("desks", (table) => {
       table.increments();
       table.integer("number");
+      table.integer("unity_id");
       table.timestamps();
     });
   }

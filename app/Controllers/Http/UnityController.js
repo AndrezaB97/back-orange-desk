@@ -3,6 +3,7 @@
 const Unity = use("App/Models/Unity");
 const AddressUnity = use("App/Models/AddressUnity");
 const { validate } = use("Validator");
+const Desk = use("App/Models/Desk");
 
 class UnityController {
   async index() {
@@ -13,7 +14,6 @@ class UnityController {
     const rules = {
       total_capacity: "required|integer",
       percent_allowed: "required|integer",
-      capacity_allowed: "required|integer",
       is_main: "required|boolean",
       "address.zip_code": "required|string|min:9",
       "address.road": "required|string|max:200",
@@ -33,9 +33,12 @@ class UnityController {
     var unityData = request.only([
       "total_capacity",
       "percent_allowed",
-      "capacity_allowed",
       "is_main",
     ]);
+
+    unityData.capacity_allowed = parseInt(
+      (request.body.total_capacity * request.body.percent_allowed) / 100
+    );
 
     const unity = await Unity.create(unityData);
 
@@ -46,6 +49,12 @@ class UnityController {
     const address = await AddressUnity.create(addressData);
 
     unity.address = address;
+
+    for (let i = 1; i <= 40; i++) {
+      await Desk.create({ number: i, unity_id: unity.id });
+    }
+
+    unity.desks = await Desk.query().where("unity_id", unity.id).fetch();
 
     return unity;
   }
