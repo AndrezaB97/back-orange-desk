@@ -62,10 +62,10 @@ class DeskController {
       indexes.push(index);
     });
 
-    for (let i = 0; i < indexes.length; i++) {
-      for (let j = 0; j < desks.length; j++) {
+    for (let j = 0; j < desks.length; j++) {
+      for (let i = 0; i < indexes.length; i++) {
         if (indexes[i] === desks[j]) {
-          desks.splice(i, 1);
+          desks.splice(j, 1);
         }
       }
     }
