@@ -54,13 +54,7 @@ class DeskController {
     for (let i = 1; i <= 40; i++) {
       desks.push(i);
     }
-
-    deskInUse.forEach((element) => {
-      return element;
-    });
-
     let indexes = [];
-
     await Object.keys(deskInUse.rows).forEach((key) => {
       const index = desks.indexOf(deskInUse.rows[key].$attributes.desk);
 
