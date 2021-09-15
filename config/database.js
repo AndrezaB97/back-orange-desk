@@ -7,7 +7,7 @@ const Env = use("Env");
 const Helpers = use("Helpers");
 
 module.exports = {
-  connection: Env.get("DB_CONNECTION", "pg"),
+  connection: Env.get("DB_CONNECTION", "mysql"),
 
   sqlite: {
     client: "sqlite3",
