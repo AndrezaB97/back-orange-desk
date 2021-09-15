@@ -43,17 +43,18 @@ class DeskController {
       return response.status(400).send(validation.messages());
     }
 
+    // criando mesas
+    let desks = [];
+    for (let i = 1; i <= 40; i++) {
+      desks.push(i);
+    }
+
     const data = request.only(["unity_id", "date"]);
 
     const deskInUse = await Reserve.query()
       .where("date", "=", data.date)
       .where("unity_id", data.unity_id)
       .fetch();
-
-    let desks = [];
-    for (let i = 1; i <= 40; i++) {
-      desks.push(i);
-    }
 
     Object.keys(deskInUse.rows).forEach((key) => {
       const index = desks.indexOf(deskInUse.rows[0].$attributes.desk);
