@@ -26,7 +26,7 @@ class DeskController {
 
     let unity = await Unity.findOrFail(data.unity_id);
 
-    let result = unity.capacity_allowed - numDesk[0]["count(*)"];
+    let result = unity.capacity_allowed - (await numDesk[0]["count(*)"]);
 
     return { number: result };
   }
@@ -46,7 +46,7 @@ class DeskController {
     // criando mesas
     let desks = [];
     for (let i = 1; i <= 40; i++) {
-      desks.push(i);
+      await desks.push(i);
     }
 
     const data = request.only(["unity_id", "date"]);
