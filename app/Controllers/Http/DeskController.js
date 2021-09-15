@@ -55,7 +55,7 @@ class DeskController {
       desks.push(i);
     }
 
-    Object.keys(deskInUse.rows).forEach((key) => {
+    await Object.keys(deskInUse.rows).forEach((key) => {
       const index = desks.indexOf(deskInUse.rows[0].$attributes.desk);
       if (index > -1) {
         desks.splice(index, 1);
