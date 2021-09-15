@@ -22,11 +22,14 @@ class DeskController {
     let numDesk = await Reserve.query()
       .where("unity_id", data.unity_id)
       .where("date", "=", data.date)
-      .fetch();
+      .count();
+
+    return numDesk;
 
     let unity = await Unity.find(data.unity_id);
 
-    let result = (await unity.capacity_allowed) - Object.keys(numDesk).length;
+    let result =
+      (await unity.capacity_allowed) - Object.keys(numDesk[0]).length;
 
     return { number: result };
   }
