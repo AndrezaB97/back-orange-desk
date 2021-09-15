@@ -64,7 +64,7 @@ class DeskController {
 
     for (let i = 0; i < indexes.length; i++) {
       for (let j = 0; j < desks.length; j++) {
-        if (indexes[i] == desks[j]) {
+        if (indexes[i] === desks[j]) {
           desks.splice(i, 1);
         }
       }
