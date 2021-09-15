@@ -24,7 +24,7 @@ class DeskController {
       .where("date", "=", data.date)
       .count();
 
-    return numDesk.count;
+    return numDesk;
     let unity = await Unity.find(data.unity_id);
 
     let result = (await unity.capacity_allowed) - numDesk.count;
