@@ -26,7 +26,8 @@ class DeskController {
 
     let unity = await Unity.findOrFail(data.unity_id);
 
-    let result = unity.capacity_allowed - numDesk[0]["count(*)"];
+    let result =
+      (await unity.capacity_allowed) - (await numDesk[0]["count(*)"]);
 
     return { number: result };
   }
