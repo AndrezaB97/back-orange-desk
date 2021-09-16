@@ -11,6 +11,10 @@ class Unity extends Model {
   desks() {
     return this.hasMany("App/Models/Desk");
   }
+
+  reserve() {
+    return this.hasMany("App/Models/Reserve");
+  }
 }
 
 module.exports = Unity;

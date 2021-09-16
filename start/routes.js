@@ -48,6 +48,8 @@ Route.group(() => {
   Route.post("/reserve", "ReserveController.create"); // login do adm
   Route.post("/desk_available", "DeskController.deskAvailable"); // login do adm
   Route.post("/desk_available_number", "DeskController.desksAvailableNumber"); // login do adm
+  Route.get("/my_reserves", "ReserveController.myReserves");
+  Route.delete("/delete_reserve/:id", "ReserveController.deleteReserve");
   // desksAvailableNumber
 })
   .prefix("api/v1")

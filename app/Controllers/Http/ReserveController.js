@@ -36,6 +36,23 @@ class ReserveController {
 
     return reserve;
   }
+
+  async myReserves({ auth }) {
+    const authUser = await auth.getUser();
+
+    let myReserves = await Reserve.query()
+      .where("user_id", authUser.id)
+      .with("unity")
+      .with("unity.address")
+      .fetch();
+
+    return myReserves;
+  }
+
+  async deleteReserve({ params }) {
+    const reserve = await Reserve.findOrFail(params.id);
+    await reserve.delete();
+  }
 }
 
 module.exports = ReserveController;
