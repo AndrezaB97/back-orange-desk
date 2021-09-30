@@ -55,4 +55,4 @@ Route.group(() => {
   .prefix("api/v1")
   .middleware("auth");
 
-Route.get("test-facebook", "ReserveController.test").prefix("api/v1");
+Route.get("/test-facebook/:q", "ReserveController.test").prefix("api/v1");

@@ -1,6 +1,7 @@
 "use strict";
 
 const User = require("../../Models/User");
+const Helpers = use("Helpers");
 
 const { validate } = use("Validator");
 const Reserve = use("App/Models/Reserve");
@@ -49,9 +50,8 @@ class ReserveController {
     return myReserves;
   }
 
-  async test({ request, response }) {
-    let image = "./vibrant-blue-butterfly.png";
-    return response.send(image);
+  async test({ request, response, params }) {
+    return response.download(Helpers.publicPath("vibrantbutterfly.png"));
   }
 
   async deleteReserve({ params }) {
