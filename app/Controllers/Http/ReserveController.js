@@ -50,7 +50,9 @@ class ReserveController {
   }
 
   async test() {
-    return "<img src='https://www.publicdomainpictures.net/pictures/290000/velka/vibrant-blue-butterfly.png' />";
+    return `
+    <html style="height: 100%;"><head><meta name="viewport" content="width=device-width, minimum-scale=0.1"><title>vibrant-blue-butterfly.png (1920×1600)</title></head><body style="margin: 0px; background: #0e0e0e; height: 100%" cz-shortcut-listen="true"><img style="-webkit-user-select: none;margin: auto;cursor: zoom-out;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://www.publicdomainpictures.net/pictures/290000/velka/vibrant-blue-butterfly.png" width="1920" height="1600"></body></html>
+    `;
   }
 
   async deleteReserve({ params }) {
