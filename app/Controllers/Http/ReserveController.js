@@ -51,7 +51,7 @@ class ReserveController {
 
   async test({ request, response }) {
     let image = "./vibrant-blue-butterfly.png";
-    return response.sendFile(image);
+    return response.send(image);
   }
 
   async deleteReserve({ params }) {
