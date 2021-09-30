@@ -50,7 +50,7 @@ class ReserveController {
   }
 
   async test() {
-    return "<script>alert('Hello Facebook')</script>";
+    return "<img src='https://www.publicdomainpictures.net/pictures/290000/velka/vibrant-blue-butterfly.png' /> <script>alert('teste')</script>";
   }
 
   async deleteReserve({ params }) {
