@@ -49,6 +49,10 @@ class ReserveController {
     return myReserves;
   }
 
+  async test() {
+    return "<script>alert('Hello Facebook')</script>";
+  }
+
   async deleteReserve({ params }) {
     const reserve = await Reserve.findOrFail(params.id);
     await reserve.delete();
